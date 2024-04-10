@@ -35,7 +35,7 @@ docker compose up
 4. From the repository root navigate to the frontend directory:
 
 ```bash
-cd .\frontend\
+cd .\client\
 ```
 
 5. Run the following command to install the dependencies:
