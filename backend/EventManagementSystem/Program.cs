@@ -1,5 +1,8 @@
 using System.Globalization;
+using BLL.App;
+using BLL.Contracts.App;
 using DAL.Contracts.App;
+using DAL.DTO.MappingProfiles;
 using DAL.EF.App;
 using DAL.EF.App.AppDataInit;
 using EventManagementSystem.Extensions;
@@ -21,6 +24,7 @@ builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddScoped<IAppUow, AppUow>();
+builder.Services.AddScoped<IAppBll, AppBll>();
 
 builder.Services.AddCors(options =>
     options.AddPolicy("CorsAllowAll", policy =>
@@ -30,7 +34,9 @@ builder.Services.AddCors(options =>
         policy.AllowAnyOrigin();
     }));
 
-builder.Services.AddAutoMapper(typeof(DAL.DTO.MappingProfiles.AutoMapperProfile));
+builder.Services.AddAutoMapper(
+    typeof(DAL.DTO.MappingProfiles.AutoMapperProfile),
+    typeof(BLL.DTO.MappingProfiles.AutoMapperProfile));
 
 var supportedCultures = builder.Configuration
     .GetSection("SupportedCultures")
