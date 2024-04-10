@@ -1,0 +1,19 @@
+<div class="header">
+  <a class="title" [routerLink]="'/'">
+    <img src="../../../assets/logo.svg" />
+  </a>
+  <div class="navigation">
+    <div class="links">
+      <a
+        *ngFor="let link of links"
+        class="link"
+        [routerLink]="link.path"
+        [class.selected]="link.selected"
+        >{{ link.label }}</a
+      >
+    </div>
+    <div class="symbol">
+      <img src="../../../assets/symbol.svg" />
+    </div>
+  </div>
+</div>

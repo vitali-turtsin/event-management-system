@@ -1,0 +1,14 @@
+<div class="footer">
+  <div *ngFor="let column of infoByColumn" class="column">
+    <div class="column-title" [innerHTML]="column.htmlColumnLabel"></div>
+    <ng-container *ngFor="let item of column.items">
+      <a
+        *ngIf="item.linkPath"
+        class="column-link"
+        [routerLink]="item.linkPath"
+        [innerHTML]="item.htmlLabel"
+      ></a>
+      <div *ngIf="!item.linkPath" [innerHTML]="item.htmlLabel"></div>
+    </ng-container>
+  </div>
+</div>

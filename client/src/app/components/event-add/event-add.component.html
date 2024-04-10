@@ -1,0 +1,38 @@
+<div class="form-page-container">
+  <app-title-banner [title]="'Ürituse lisamine'"></app-title-banner>
+
+  <div class="form-container">
+    <div class="title">Ürituse lisamine</div>
+
+    <div class="form">
+      <div class="form-group">
+        <label for="name">Ürituse nimi:</label>
+        <input type="text" id="name" [(ngModel)]="event.name" />
+      </div>
+
+      <div class="form-group">
+        <label for="date">Toimumisaeg:</label>
+        <input type="datetime-local" id="date" [(ngModel)]="event.dateTime" />
+      </div>
+
+      <div class="form-group">
+        <label for="location">Koht:</label>
+        <input type="text" id="location" [(ngModel)]="event.location" />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Lisa info:</label>
+        <textarea
+          class="input"
+          id="description"
+          [(ngModel)]="event.description"
+        ></textarea>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button class="button secondary" [routerLink]="'/'">Tagasi</button>
+      <button class="button primary" (click)="onSubmit()">Lisa</button>
+    </div>
+  </div>
+</div>

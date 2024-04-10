@@ -1,0 +1,19 @@
+.participant-radio {
+  margin-left: 145px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 3rem;
+  margin-bottom: 1rem;
+}
+
+.participants-table {
+  min-width: 600px;
+  max-width: 600px;
+  margin: 0;
+  margin-left: 145px;
+}
+
+.remove-button {
+  cursor: pointer;
+}

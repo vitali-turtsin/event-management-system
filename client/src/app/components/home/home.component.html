@@ -1,0 +1,50 @@
+<div class="home-container">
+  <div class="banner">
+    <div class="banner-text">
+      <span [innerHTML]="homeHtmlText"></span>
+    </div>
+    <img class="banner-image" src="../../../assets/pilt.jpg" alt="banner" />
+  </div>
+
+  <div class="event-lists">
+    <div class="event-list">
+      <div class="header">Tulevased üritused</div>
+      <div class="event-list-body">
+        <table>
+          <div *ngIf="!futureEvents?.length">Üritusi pole</div>
+          <tr *ngFor="let event of futureEvents; index as i">
+            <td>{{ i + 1 }}</td>
+            <td>{{ event.name }}</td>
+            <td>{{ event.dateTime | date }}</td>
+            <td>
+              <a [routerLink]="['yritused', event.id]">OSALEJAD</a>
+            </td>
+            <td>
+              <img
+                class="remove-button"
+                src="../../../assets/remove.svg"
+                alt="remove"
+                (click)="removeEvent(event.id)"
+              />
+            </td>
+          </tr>
+        </table>
+        <a class="add-event" [routerLink]="'/lisa-yritus'">LISA ÜRITUS</a>
+      </div>
+    </div>
+    <div class="event-list">
+      <div class="header">Toimunud üritused</div>
+      <div class="event-list-body">
+        <div *ngIf="!pastEvents?.length">Üritusi pole</div>
+        <table>
+          <tr *ngFor="let event of pastEvents; index as i">
+            <td>{{ i + 1 }}</td>
+            <td>{{ event.name }}</td>
+            <td>{{ event.dateTime | date }}</td>
+            <td>OSALEJAD</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

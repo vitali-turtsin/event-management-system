@@ -1,0 +1,70 @@
+<div class="form-page-container">
+  <app-title-banner [title]="'Osavõtja info'"></app-title-banner>
+  <div class="form-container">
+    <div class="title">Osavõtja info</div>
+    <div class="form" *ngIf="!!participant">
+      <div class="form-group">
+        <label for="name"
+          >{{ participant.isOrganization ? "Nimi" : "Eesnimi" }}:</label
+        >
+        <input type="text" id="name" [(ngModel)]="participant.firstName" />
+      </div>
+
+      <div class="form-group" *ngIf="!participant?.isOrganization">
+        <label for="last-name">Perenimi:</label>
+        <input type="text" id="last-name" [(ngModel)]="participant.lastName" />
+      </div>
+
+      <div class="form-group">
+        <label for="code"
+          >{{ participant.isOrganization ? "Reg nr" : "Isikukood" }}:</label
+        >
+        <input type="text" id="code" [(ngModel)]="participant.personalCode" />
+      </div>
+
+      <div class="form-group" *ngIf="participant.isOrganization">
+        <label for="numberOfParticipants">Tulevate osavõtjate arv:</label>
+        <input
+          type="number"
+          id="numberOfParticipants"
+          [(ngModel)]="participant.numberOfParticipants"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="paymentMethod">Makseviis:</label>
+        <select
+          id="paymentMethod"
+          class="input"
+          [(ngModel)]="participant.paymentMethodId"
+        >
+          <option
+            *ngFor="let paymentMethod of paymentMethods"
+            value="{{ paymentMethod.id }}"
+          >
+            {{ paymentMethod.name }}
+          </option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Lisainfo:</label>
+        <textarea
+          id="description"
+          class="input"
+          [(ngModel)]="participant.description"
+        ></textarea>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button
+        class="button secondary"
+        [routerLink]="['/yritused', participant?.eventId]"
+      >
+        Tagasi
+      </button>
+      <button class="button primary" (click)="onSubmit()">Salvesta</button>
+    </div>
+  </div>
+</div>

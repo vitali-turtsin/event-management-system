@@ -1,0 +1,140 @@
+<div class="form-page-container">
+  <app-title-banner [title]="'Osavõtjad'"></app-title-banner>
+
+  <div class="form-container">
+    <div class="title">Osavõtjad</div>
+
+    <div class="form">
+      <div class="form-group">
+        <span class="label">Ürituse nimi:</span>
+        <span class="input">{{ event?.name }}</span>
+      </div>
+      <div class="form-group">
+        <span class="label">Toimumisaeg:</span>
+        <span>{{ event?.dateTime | date }}</span>
+      </div>
+      <div class="form-group">
+        <span class="label">Koht:</span>
+        <span>{{ event?.location }}</span>
+      </div>
+      <div class="form-group">
+        <div class="label"></div>
+        <table class="participants-table">
+          <tr *ngFor="let participant of eventParticipants; index as i">
+            <td>{{ i + 1 }}</td>
+            <td>{{ participant.name }}</td>
+            <td>{{ participant.code }}</td>
+            <td>
+              <a
+                [routerLink]="['/osalejad', participant.id]"
+                [queryParams]="
+                  participant.isOrganization ? { isOrganization: true } : {}
+                "
+                >VAATA</a
+              >
+            </td>
+            <td
+              class="remove-button"
+              (click)="removeParticipant(participant.id)"
+            >
+              KUSTUTA
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="title">Osavõtjate lisamine</div>
+
+    <div class="form">
+      <div class="participant-radio">
+        <span>
+          <input
+            type="radio"
+            id="individual"
+            name="participantType"
+            [checked]="!newParticipant.isOrganization"
+            (change)="switchParticipantType()"
+          />
+          <label for="individual">Eraisik</label>
+        </span>
+        <span>
+          <input
+            type="radio"
+            id="company"
+            name="participantType"
+            [checked]="newParticipant.isOrganization"
+            (change)="switchParticipantType()"
+          />
+          <label for="company">Ettevõte</label>
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label for="name"
+          >{{ newParticipant.isOrganization ? "Nimi" : "Eesnimi" }}:</label
+        >
+        <input type="text" id="name" [(ngModel)]="newParticipant.firstName" />
+      </div>
+
+      <div class="form-group" *ngIf="!newParticipant.isOrganization">
+        <label for="last-name">Perenimi:</label>
+        <input
+          type="text"
+          id="last-name"
+          [(ngModel)]="newParticipant.lastName"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="code"
+          >{{ newParticipant.isOrganization ? "Reg nr" : "Isikukood" }}:</label
+        >
+        <input
+          type="text"
+          id="code"
+          [(ngModel)]="newParticipant.personalCode"
+        />
+      </div>
+
+      <div class="form-group" *ngIf="newParticipant.isOrganization">
+        <label for="numberOfParticipants">Tulevate osavõtjate arv:</label>
+        <input
+          type="number"
+          id="numberOfParticipants"
+          [(ngModel)]="newParticipant.numberOfParticipants"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="paymentMethod">Makseviis:</label>
+        <select
+          id="paymentMethod"
+          class="input"
+          [(ngModel)]="newParticipant.paymentMethodId"
+        >
+          <option
+            *ngFor="let paymentMethod of paymentMethods"
+            value="{{ paymentMethod.id }}"
+          >
+            {{ paymentMethod.name }}
+          </option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Lisainfo:</label>
+        <textarea
+          id="description"
+          class="input"
+          [(ngModel)]="newParticipant.description"
+        ></textarea>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button class="button secondary" [routerLink]="'/'">Tagasi</button>
+      <button class="button primary" (click)="onSubmit()">Salvesta</button>
+    </div>
+  </div>
+</div>
