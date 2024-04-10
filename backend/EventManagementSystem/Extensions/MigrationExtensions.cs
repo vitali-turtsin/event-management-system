@@ -9,7 +9,8 @@ namespace EventManagementSystem.Extensions
         {
             using var scope = app.ApplicationServices.CreateScope();
             var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-            context.Database.Migrate();
+
+            if (context.Database.IsRelational()) context.Database.Migrate();
         }
     }
 }

@@ -73,11 +73,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
     app.ApplyMigrations();
 }
-else
-{
-    app.UseExceptionHandler("/Home/Errors");
-    app.UseHsts();
-}
 
 await SetupAppData(app, app.Environment, app.Configuration);
 

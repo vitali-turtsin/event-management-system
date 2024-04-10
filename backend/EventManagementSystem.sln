@@ -54,6 +54,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL.App", "BLL.App\BLL.App.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PublicApi.v1.DTO", "PublicApi.v1.DTO\PublicApi.v1.DTO.csproj", "{1852F2E9-CC65-455C-869D-942749764387}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{6F49BEDF-08FE-41AC-8E07-AC39F403E2B1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -136,6 +138,10 @@ Global
 		{1852F2E9-CC65-455C-869D-942749764387}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1852F2E9-CC65-455C-869D-942749764387}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1852F2E9-CC65-455C-869D-942749764387}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F49BEDF-08FE-41AC-8E07-AC39F403E2B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F49BEDF-08FE-41AC-8E07-AC39F403E2B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F49BEDF-08FE-41AC-8E07-AC39F403E2B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F49BEDF-08FE-41AC-8E07-AC39F403E2B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
