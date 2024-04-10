@@ -1,12 +1,13 @@
 using System.Globalization;
+using Asp.Versioning;
 using BLL.App;
 using BLL.Contracts.App;
 using DAL.Contracts.App;
-using DAL.DTO.MappingProfiles;
 using DAL.EF.App;
 using DAL.EF.App.AppDataInit;
 using EventManagementSystem.Extensions;
 using Microsoft.EntityFrameworkCore;
+using PublicApi.v1.DTO.MappingProfiles;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,18 @@ builder.Services.AddDbContext<AppDbContext>(options =>
                            optionsBuilder.EnableRetryOnFailure();
                            optionsBuilder.CommandTimeout(500);
                        }));
+
+var apiVersioningBuilder = builder.Services.AddApiVersioning(options =>
+{
+    options.ReportApiVersions = true;
+    options.DefaultApiVersion = new ApiVersion(1, 0);
+});
+
+apiVersioningBuilder.AddApiExplorer(options =>
+{
+    options.GroupNameFormat = "'v'VVV";
+    options.SubstituteApiVersionInUrl = true;
+});
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -36,7 +49,8 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddAutoMapper(
     typeof(DAL.DTO.MappingProfiles.AutoMapperProfile),
-    typeof(BLL.DTO.MappingProfiles.AutoMapperProfile));
+    typeof(BLL.DTO.MappingProfiles.AutoMapperProfile),
+    typeof(AutoMapperProfile));
 
 var supportedCultures = builder.Configuration
     .GetSection("SupportedCultures")

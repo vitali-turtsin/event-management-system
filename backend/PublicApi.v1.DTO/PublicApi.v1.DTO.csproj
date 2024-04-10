@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="8.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BLL.DTO\BLL.DTO.csproj" />
+    <ProjectReference Include="..\Domain.Base\Domain.Base.csproj" />
+    <ProjectReference Include="..\Extensions.Base\Extensions.Base.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -20,6 +20,7 @@
     <ProjectReference Include="..\BLL.Contracts.App\BLL.Contracts.App.csproj" />
     <ProjectReference Include="..\DAL.Contracts.App\DAL.Contracts.App.csproj" />
     <ProjectReference Include="..\DAL.EF.App\DAL.EF.App.csproj" />
+    <ProjectReference Include="..\PublicApi.v1.DTO\PublicApi.v1.DTO.csproj" />
   </ItemGroup>
 
 </Project>
