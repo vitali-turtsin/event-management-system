@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate, NavigateOptions } from 'react-router-dom';
+import { useParams, useNavigate, createSearchParams } from 'react-router-dom';
 import EventService from '../../services/EventService';
 import PersonService from '../../services/PersonService';
 import OrganizationService from '../../services/OrganizationService';
@@ -167,9 +167,10 @@ const EventDetails = () => {
                                             href={`/participants/${participant.id}`}
                                             onClick={(e) => {
                                                 e.preventDefault();
-                                                navigate(`/participants/${participant.id}`, {
-                                                    isOrganization: participant.isOrganization,
-                                                } as NavigateOptions);
+                                                navigate({
+                                                    pathname: `/participants/${participant.id}`,
+                                                    search: createSearchParams({ isOrganization: participant.isOrganization.toString() }).toString(),
+                                                });
                                             }}
                                         >
                                             VIEW

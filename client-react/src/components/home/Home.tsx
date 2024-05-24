@@ -59,7 +59,7 @@ const Home = () => {
                                         <td>{event.name}</td>
                                         <td>{new Date(event.dateTime).toLocaleDateString()}</td>
                                         <td>
-                                            <Link to={`/events/${event.id}`}>PARTICIPANTS</Link>
+                                            <a href={`/events/${event.id}`}>PARTICIPANTS</a>
                                         </td>
                                         <td>
                                             <img
@@ -88,7 +88,7 @@ const Home = () => {
                                         <td>{i + 1}</td>
                                         <td>{event.name}</td>
                                         <td>{new Date(event.dateTime).toLocaleDateString()}</td>
-                                        <td>PARTICIPANTS</td>
+                                        <a href={`/events/${event.id}`}>PARTICIPANTS</a>
                                     </tr>
                                 ))}
                             </tbody>

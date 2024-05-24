@@ -18,7 +18,7 @@ const ParticipantDetails = () => {
 
     useEffect(() => {
         loadParticipant();
-    });
+    }, [id, isOrganization]);
 
     useEffect(() => {
         loadPaymentMethods();
@@ -112,81 +112,78 @@ const ParticipantDetails = () => {
             });
     };
 
-    if (!participant) {
-        navigate("/");
-        return null;
-    }
-
     return (
         <div className="form-page-container">
             <TitleBanner title="Participant Details" />
             <div className="form-container">
                 <div className="title">Participant Details</div>
-                <div className="form">
-                    <div className="form-group">
-                        <label htmlFor="name">{participant.isOrganization ? "Name" : "First Name"}:</label>
-                        <input type="text" id="name" value={participant.firstName} onChange={e => setParticipant({ ...participant, firstName: e.target.value })} />
-                    </div>
-
-                    {!participant.isOrganization && (
+                {!!participant && (
+                    <div className="form">
                         <div className="form-group">
-                            <label htmlFor="last-name">Last Name:</label>
-                            <input type="text" id="last-name" value={participant.lastName} onChange={e => setParticipant({ ...participant, lastName: e.target.value })} />
+                            <label htmlFor="name">{participant.isOrganization ? "Name" : "First Name"}:</label>
+                            <input type="text" id="name" value={participant.firstName} onChange={e => setParticipant({ ...participant, firstName: e.target.value })} />
                         </div>
-                    )}
 
-                    <div className="form-group">
-                        <label htmlFor="code">
-                            {participant.isOrganization ? "Reg nr" : "Personal Code"}:
-                        </label>
-                        <input
-                            type="text"
-                            id="code"
-                            value={participant.personalCode}
-                            onChange={e =>
-                                setParticipant({ ...participant, personalCode: e.target.value })
-                            }
-                        />
-                    </div>
+                        {!participant.isOrganization && (
+                            <div className="form-group">
+                                <label htmlFor="last-name">Last Name:</label>
+                                <input type="text" id="last-name" value={participant.lastName} onChange={e => setParticipant({ ...participant, lastName: e.target.value })} />
+                            </div>
+                        )}
 
-                    {participant.isOrganization && (
                         <div className="form-group">
-                            <label htmlFor="numberOfParticipants">Number of comming participants:</label>
+                            <label htmlFor="code">
+                                {participant.isOrganization ? "Reg nr" : "Personal Code"}:
+                            </label>
                             <input
-                                type="number"
-                                id="numberOfParticipants"
-                                value={participant.numberOfParticipants}
-                                onChange={e => setParticipant({ ...participant, numberOfParticipants: parseInt(e.target.value) })}
+                                type="text"
+                                id="code"
+                                value={participant.personalCode}
+                                onChange={e =>
+                                    setParticipant({ ...participant, personalCode: e.target.value })
+                                }
                             />
                         </div>
-                    )}
 
-                    <div className="form-group">
-                        <label htmlFor="paymentMethod">Payment Method:</label>
-                        <select
-                            id="paymentMethod"
-                            className="input"
-                            value={participant.paymentMethodId}
-                            onChange={e => setParticipant({ ...participant, paymentMethodId: e.target.value })}
-                        >
-                            {paymentMethods.map(paymentMethod => (
-                                <option key={paymentMethod.id} value={paymentMethod.id}>
-                                    {paymentMethod.name}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
+                        {participant.isOrganization && (
+                            <div className="form-group">
+                                <label htmlFor="numberOfParticipants">Number of comming participants:</label>
+                                <input
+                                    type="number"
+                                    id="numberOfParticipants"
+                                    value={participant.numberOfParticipants}
+                                    onChange={e => setParticipant({ ...participant, numberOfParticipants: parseInt(e.target.value) })}
+                                />
+                            </div>
+                        )}
 
-                    <div className="form-group">
-                        <label htmlFor="description">Description:</label>
-                        <textarea
-                            id="description"
-                            className="input"
-                            value={participant.description}
-                            onChange={e => setParticipant({ ...participant, description: e.target.value })}
-                        />
+                        <div className="form-group">
+                            <label htmlFor="paymentMethod">Payment Method:</label>
+                            <select
+                                id="paymentMethod"
+                                className="input"
+                                value={participant.paymentMethodId}
+                                onChange={e => setParticipant({ ...participant, paymentMethodId: e.target.value })}
+                            >
+                                {paymentMethods.map(paymentMethod => (
+                                    <option key={paymentMethod.id} value={paymentMethod.id}>
+                                        {paymentMethod.name}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="description">Description:</label>
+                            <textarea
+                                id="description"
+                                className="input"
+                                value={participant.description}
+                                onChange={e => setParticipant({ ...participant, description: e.target.value })}
+                            />
+                        </div>
                     </div>
-                </div>
+                )}
                 <div className="buttons">
                     <button
                         className="button secondary"
