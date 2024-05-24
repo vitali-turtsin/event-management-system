@@ -1,0 +1,23 @@
+.banner-header {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  height: 75px;
+
+  .title {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    font-size: 30px;
+    font-weight: 100;
+    background-color: #005aa2;
+    color: white;
+    min-width: 200px;
+  }
+
+  .image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

@@ -1,0 +1,38 @@
+@use "sass:math"; // Import the math module
+// Mixin for media queries
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media (max-width: 600px) {
+      @content;
+    }
+  }
+  @if $breakpoint == tablet-portrait {
+    @media (max-width: 900px) {
+      @content;
+    }
+  }
+  @if $breakpoint == tablet-landscape {
+    @media (max-width: 1200px) {
+      @content;
+    }
+  }
+  @if $breakpoint == desktop {
+    @media (max-width: 1800px) {
+      @content;
+    }
+  }
+}
+
+@function rem($pixels, $context: 16px) {
+  @return math.div($pixels, $context) * 1rem;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin transition($args) {
+  transition: $args;
+}
