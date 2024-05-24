@@ -32,11 +32,18 @@ docker compose up
 
 3. To see Swagger documentation navigate to `https://localhost:5001/swagger/index.html`
 
-4. From the repository root navigate to the frontend directory:
+4. From the repository root navigate to the Angular frontend directory:
 
 ```bash
 cd .\client\
 ```
+
+4.1 React:
+
+```bash
+cd .\client-react\
+```
+
 
 5. Run the following command to install the dependencies:
 
