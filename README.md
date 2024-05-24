@@ -10,7 +10,7 @@ This repository contains the source code for an Event Management Web Application
 
 - Entities between layers are mapped using AutoMapper with a support for customization. The application uses dependency injection to inject services into controllers. Api versioning is implemented using Asp.Versioning library. Web api tests are implemented using xUnit library. The application is containerized using Docker.
 
-- Frontend is implemented using latest version of the Angular framework.
+- Frontend is implemented using latest version of the Angular and React frameworks.
 
 ## ERD
 
