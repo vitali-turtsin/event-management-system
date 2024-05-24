@@ -47,7 +47,7 @@ npm install
 6. Run the following command to start the frontend application:
 
 ```bash
-ng serve
+npm start
 ```
 
 7. Open a browser and navigate to `http://localhost:4200/` to access the application.
